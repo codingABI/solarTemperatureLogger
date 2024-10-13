@@ -26,7 +26,7 @@ with the Arduino IDE Library Manager and the libraries
 - KY040 (https://github.com/codingABI/KY040 by codingABI)
 - arduino_ST7032 (https://github.com/tomozh/arduino_ST7032 by tomozh@gmail.com)
 
-from github.
+from GitHub.
 
 For details to get the small code pieces for
 
