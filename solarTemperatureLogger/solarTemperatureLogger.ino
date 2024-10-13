@@ -18,16 +18,15 @@
  * I use external code in this project in form of libraries and two small
  * code piece called summertime_EU and getBandgap, but does not provide these code.
  *
- * If you want to compile my project, you should be able to download the
- * needed libraries:
+ * If you want to compile my project, you should be able to download the needed libraries
  * - DCF77 (by Thijs Elenbaas)
  * - Time (by Michael Margolis/Paul Stoffregen)
  * - DallasTemperature (by Miles Burton)
- * with the Arduino IDE Library Manager and the libraries:
+ * with the Arduino IDE Library Manager and the libraries
  * - SWITCHBUTTON (https://github.com/codingABI/SWITCHBUTTON by codingABI)
  * - KY040 (https://github.com/codingABI/KY040 by codingABI)
  * - arduino_ST7032 (https://github.com/tomozh/arduino_ST7032 by tomozh@gmail.com)
- * from github.
+ * from GitHub.
  *
  * For details to get the small code pieces for
  * - summertime_EU "European Daylight Savings Time calculation by "jurs" for German Arduino Forum"
