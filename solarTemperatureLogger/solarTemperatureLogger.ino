@@ -68,8 +68,8 @@
 #include <DallasTemperature.h>
 #include "customChars.h"
 // Set display language to DE or EN
-#define DISPLAYLANGUAGE_DE
-//#define DISPLAYLANGUAGE_EN
+//#define DISPLAYLANGUAGE_DE
+#define DISPLAYLANGUAGE_EN
 #include "displayLanguage.h"
 
 // Pin definitions
@@ -99,7 +99,7 @@
 #define SERIALBAUD 9600 // Serial baud when sending datasets
 #define USERTIMEOUT 60 // Set timeout expiration in millis for user inputs
 #define MAXDATAAGE 30 // Maximum age in seconds for an valid dataset
-#define SENSORDELAY 2 // We need 2 seconds to power up the remperature sensor and get the first value
+#define SENSORDELAY 2 // We need 2 seconds to power up the temperature sensor and get the first value
 
 // Special chars
 #define CHAR_CANCEL 247
@@ -138,7 +138,7 @@ typedef struct {
 volatile t_clock v_clock;
 
 bool g_displayEnabled = false; // True, if display is enabled
-bool g_weakTime = true; // True, if first DCF77 is still penting or last sync was not sucessful
+bool g_weakTime = true; // True, if first DCF77 is still pending or last sync was not sucessfull
 unsigned long g_nextRecordUTC = 0; // Next planed sensor measurement
 unsigned long g_nextDCF77SyncUTC = 0; // Next planed DCF77 sync
 unsigned long g_firstDCF77SyncUTC = 0; // First DCF77 sync (0, if never synced)
@@ -152,33 +152,33 @@ enum powerSources { SOLARPOWER, BATTERYPOWER, USBPOWERBANK, MAXPOWERSOURCES };
 powerSources g_powerSource = SOLARPOWERINIT;
 
 // Record modes
-enum recordModes { 
-  NORECORDING, 
-  AT0x00, 
-  AT0000, 
-  AT0100, 
-  AT0200, 
-  AT0300, 
-  AT0400, 
-  AT0500, 
-  AT0600, 
-  AT0700, 
-  AT0800, 
-  AT0900, 
-  AT1000, 
-  AT1100, 
-  AT1200, 
-  AT1300, 
-  AT1400, 
-  AT1500, 
-  AT1600, 
-  AT1700, 
+enum recordModes {
+  NORECORDING,
+  AT0x00,
+  AT0000,
+  AT0100,
+  AT0200,
+  AT0300,
+  AT0400,
+  AT0500,
+  AT0600,
+  AT0700,
+  AT0800,
+  AT0900,
+  AT1000,
+  AT1100,
+  AT1200,
+  AT1300,
+  AT1400,
+  AT1500,
+  AT1600,
+  AT1700,
   AT1800,
-  AT1900, 
-  AT2000, 
-  AT2100, 
-  AT2200, 
-  AT2300,  
+  AT1900,
+  AT2000,
+  AT2100,
+  AT2200,
+  AT2300,
   MAXRECORDMODES };
 #define RECORDMODEINIT NORECORDING
 recordModes g_recordMode = RECORDMODEINIT;
@@ -599,7 +599,7 @@ void updateTemperature() {
 }
 
 /* Get supercap voltage Vcap in 10mV (build average from previous values)
- * We can not meassure voltages below 3.3V here
+ * We can not measure voltages below 3.3V here
  * because analogRead depends on the microcontroller Vcc
  * and the voltage decreases also when the supercap
  * is below ~3.4V.
@@ -968,7 +968,7 @@ void loop() {
     ((g_requestTemperatureBits & REQUESTMANUAL) == REQUESTMANUAL)) {
     // Store dataset in EEPROM
     dataSet = { 0, 0 };
-    if (g_eepromNextIndex > 0) getEEPROMDatasetAtIndex(g_eepromNextIndex-1, dataSet); //Prevents duplicate entries
+    if (g_eepromNextIndex > 0) getEEPROMDatasetAtIndex(g_eepromNextIndex-1, dataSet); // Prevents duplicate entries
     // Accept only changed and actual data
     if (((g_lastData.time != dataSet.time)
       || (g_lastData.data != dataSet.data))
