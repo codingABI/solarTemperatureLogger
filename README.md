@@ -1,6 +1,6 @@
 # solarTemperatureLogger
 The device is a logger for temperature and time (DCF77 time signal driven). It is powered by a small solar panel (Battery or USB powerbank would also work).
-- A dataset consists of a temperature value and the corresponding timestamp 
+- A dataset consists of a temperature value and the corresponding timestamp
 - Datasets can be created manually with a knob or automatically by schedule
 - Up to 167 datasets can be store in a persistent buffer (1kB-EEPROM)
 - Datasets from the persistent buffer can be sent via serial to a computer
@@ -8,11 +8,11 @@ The device is a logger for temperature and time (DCF77 time signal driven). It i
 ![Device](assets/images/solarTemperatureLogger.jpg)
 
 ## License and copyright
-My code is licensed under the terms of the 2-Clause BSD License [Copyright (c) 2024 codingABI](LICENSE). 
+My code is licensed under the terms of the 2-Clause BSD License [Copyright (c) 2024 codingABI](LICENSE).
 
 ### External code
 I use external code in this project in form of libraries and two small
-code piece called summertime_EU and getBandgap, but does not provide these code. 
+code piece called summertime_EU and getBandgap, but does not provide these code.
 
 If you want to compile my project, you should be able to download the needed libraries
 
@@ -52,7 +52,7 @@ see [externalCode.ino](DCF77voiceClock/externalCode.ino).
 Perfboard with disconnected LCD display (when connected the display covers the ATmega328P)
 ![Perfboard](assets/images/Perfboard.jpg)
 
-## Used development environment 
+## Used development environment
 Arduino IDE 1.8.19 (Without "real portable" support version 2.* makes no sense for me https://forum.arduino.cc/t/arduino-ide-2-0-portable/)
 Arduino AVR Boards Version 1.8.6
 
@@ -81,7 +81,7 @@ Arduino AVR Boards Version 1.8.6
   - [Dashboard14 Record mode...](#dashboard14-record-mode)
 - Pressing the knob toggles between the [Dashboard1 Latest](#dashboard1-latest) and disabling the display
 - Rotating the knob scrolls through the different dashboards. After the last dashboard the display will be disabled
-- Long pressing the knob stores a valid dataset to the persistent buffer and displays the message "Stored" 
+- Long pressing the knob stores a valid dataset to the persistent buffer and displays the message "Stored"
 - After 60 seconds without pressing or rotating the knob the display will be disabled
 - A scale in the second line on the left side shows the dashboard index
 - When [Vcap](#vcap) is below 3.35V the display stays disabled. Additionally the red status LED flashes, if the knob is pressed or rotated.
@@ -96,14 +96,14 @@ Shows the temperature and time of the latest dataset. Every second a new dataset
 #### Dashboard2 Minimum
 ![Dashboard 02](assets/images/Dashboard02_Min.png)
 
-Shows the dataset with the lowest temperature. 
+Shows the dataset with the lowest temperature.
 
-- Long pressing the knob resets the dataset 
+- Long pressing the knob resets the dataset
 
 #### Dashboard3 Maximum
 ![Dashboard 03](assets/images/Dashboard03_Max.png)
 
-Shows the dataset with the highest temperature. 
+Shows the dataset with the highest temperature.
 
 - Long pressing the knob resets the dataset
 
@@ -247,7 +247,7 @@ Use this mode if you are operating the device with an USB powerbank. Most USB po
 #### Dashboard14 Record mode...
 ![Dashboard 14](assets/images/Dashboard14_RecordMode.png)
 
-Pressing the knob will start the selection for saving datasets manually or automatically in the persistent buffer. 
+Pressing the knob will start the selection for saving datasets manually or automatically in the persistent buffer.
 
 ##### Selection
 ![Select record mode](assets/images/SelectRecordMode.png)
@@ -282,7 +282,7 @@ Record modes:
 
 ## Clock/Timer2
 
-Normally we would need a RTC module to build an electronic clock, but in this project the ATmega328P acts like a RTC. The ATmega328P works in 8 MHz-RC mode without the need of an external crystal. A 32768 kHz clock crystal is connected to the ATmega328P and is used to trigger timer2 once per second.  
+Normally we would need a RTC module to build an electronic clock, but in this project the ATmega328P acts like a RTC. The ATmega328P works in 8 MHz-RC mode without the need of an external crystal. A 32768 kHz clock crystal is connected to the ATmega328P and is used to trigger timer2 once per second. 
 
 With this schematic my ATmega328P drifts ~8s per day. This is OK for me, because the solarTemperatureLogger will start a DCF77 time synchronization once per day and resets the drift.
 
@@ -290,7 +290,7 @@ The solarTemperatureLogger uses internally UTC for time and date. On the display
 
 ## Vcap
 
-Vcap is the voltage at the supercap. It is an important base voltage for this device and determines whether microcontroller, temperature, sensor, display ... are disabled or enabled.  
+Vcap is the voltage at the supercap. It is an important base voltage for this device and determines whether microcontroller, temperature, sensor, display ... are disabled or enabled. 
 
 ## Automatically DCF77 time synchronzitation
 
@@ -302,13 +302,13 @@ A DCF77 time synchronzitation will be startet automatically:
 If the time is set manually (see [Dashboard8 Time/Date...](#dashboard8-timedate)), this is equated to a successful first time synchronzitation.
 
 The automatically DCF77 time synchronzitation will not be started, if [Vcap](#vcap) is too low:
-- Vcap < 4.2V 
+- Vcap < 4.2V
 - or Vcap < 4.5V and device is set to power mode "Solar" (see [Dashboard13 Power source...](#dashboard13-power-source))
 
 ## Current consumption
 The current and power consumption is not static and depends on how the device is used. Whenever possible the microcontroller goes to deep sleep.
 
-| Szenario Nbr. | Szenario description | Average current consumption @3.3V |
+| Scenario Nbr. | Scenario description | Average current consumption @3.3V |
 | ------------- | ------------- | ------------- |
 | 1 | Display is disabled, Temperature sensor is not used, DCF77 sync is not used | 19uA |
 | 2 | [Dashboard1 Latest](#dashboard1-latest), Temperature sensor is used once per second, DCF77 sync is not used | 360uA |
