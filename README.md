@@ -91,7 +91,7 @@ Arduino AVR Boards Version 1.8.6
 #### Dashboard1 Latest
 ![Dashboard 01](assets/images/Dashboard01_LastData.png)
 
-Shows the temperature and time of the latest dataset. Every second a new dataset will be requested from the temperature sensor, until this dashboard is displayed.
+Shows the temperature and time of the latest dataset. Every second a new dataset will be requested from the temperature sensor, while this dashboard is displayed.
 
 #### Dashboard2 Minimum
 ![Dashboard 02](assets/images/Dashboard02_Min.png)
