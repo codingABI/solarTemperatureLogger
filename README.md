@@ -316,7 +316,7 @@ The current and power consumption is not static and depends on how the device is
 | 4 | Display is disabled, Temperature sensor is used once per hour, DCF77 sync is not used | 20uA |
 | 5 | Display is disabled, Temperature sensor is used once per hour, DCF77 sync is used one time (duration 600s[=75% of timeout]) | 26uA |
 | 6 | Display is disabled, Temperature sensor is used once per hour, DCF77 sync is used one time (duration 450s[=50% of timeout]) | 24uA |
-| 7 | Display is disabled, Temperature sensor is not used, DCF77 sync is not used, power mode is set to "USB powerbank", Vcap > 4.2V | 105uA |
+| 7 | Display is disabled, Temperature sensor is not used, DCF77 sync is not used, power mode is set to "USB powerbank", Vcap > 4.2V | 3.5mA |
 
 ## Runtime without sun or at night
 
