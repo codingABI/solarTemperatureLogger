@@ -53,7 +53,9 @@
  *
  * History:
  * 20240422, Initial version
+ * 20241027, Use DCF.getUTCTime instead of localTimeToUTC(DCF.getTime())
  */
+ 
 #include <avr/sleep.h>
 #include <avr/power.h>
 #include <ST7032.h>
@@ -444,13 +446,13 @@ void setTimeFromDCF77() {
       lastDisplayRefreshMS = millis();
     }
 
-    time_t DCFtime = DCF.getTime(); // Check if DCF77 time was received
+    time_t DCFtime = DCF.getUTCTime(); // Check if DCF77 time was received
     if (DCFtime!=0) {
       // Set received time
-      setCurrentTimeUTC(localTimeToUTC(DCFtime));
+      setCurrentTimeUTC(DCFtime);
       // Store time of first DCF77 sync
       if (g_firstDCF77SyncUTC == 0) {
-        g_firstDCF77SyncUTC = localTimeToUTC(DCFtime);
+        g_firstDCF77SyncUTC = DCFtime;
       }
       // Schedule next data recording
       scheduleNextRecord();
