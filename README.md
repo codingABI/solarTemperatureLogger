@@ -19,11 +19,10 @@ If you want to compile my project, you should be able to download the needed lib
 - DCF77 (by Thijs Elenbaas)
 - Time (by Michael Margolis/Paul Stoffregen)
 - DallasTemperature (by Miles Burton)
+- KY040 (by codingABI)
 
 with the Arduino IDE Library Manager and the libraries
-
 - SWITCHBUTTON (https://github.com/codingABI/SWITCHBUTTON by codingABI)
-- KY040 (https://github.com/codingABI/KY040 by codingABI)
 - arduino_ST7032 (https://github.com/tomozh/arduino_ST7032 by tomozh@gmail.com)
 
 from GitHub.
@@ -33,7 +32,7 @@ For details to get the small code pieces for
 - summertime_EU "European Daylight Savings Time calculation by "jurs" for German Arduino Forum"
 - getBandgap by "Coding Badly" and "Retrolefty" from the Arduino forum
 
-see [externalCode.ino](DCF77voiceClock/externalCode.ino).
+see [externalCode.ino](solarTemperatureLogger/externalCode.ino).
 
 ## Hardware
 - Microcontroller ATmega328P (In 8 MHz-RC mode. Board manager: "ATmega328 on a breadboard (8 MHz internal clock)" )
